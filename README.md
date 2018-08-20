@@ -21,20 +21,20 @@
 
 ## About
 
-A calendar component for Angular 5.0+ that can display events on a month, week or day view. The successor of [angular-bootstrap-calendar](https://github.com/mattlewis92/angular-bootstrap-calendar).
+A calendar component for Angular 5.0+ that can display events on a month, week or day view.
 
 ## Getting started
 
 First install through npm:
 
 ```bash
-npm install --save angular-calendar
+npm install --save scheduler-calendar
 ```
 
 Next include the CSS file somewhere into your app:
 
 ```
-node_modules/angular-calendar/css/angular-calendar.css
+node_modules/scheduler-calendar/css/angular-calendar.css
 ```
 
 Finally import the calendar module into your apps module:
@@ -42,7 +42,7 @@ Finally import the calendar module into your apps module:
 ```typescript
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule } from 'scheduler-calendar';
 
 @NgModule({
   imports: [
@@ -69,60 +69,6 @@ To see all available API options, take a look at the auto generated [documentati
 
 Where possible this library will strictly adhere to [semver](http://semver.org/) and only introduce API breaking changes in 0.x releases or new major versions post 1.0. The only exception to this is if you are using custom templates or extending the base components to add additional functionality, whereby critical bug fixes may introduce breakages as the internal API changes.
 
-## FAQ
-
-### Is this library AoT and universal compatible?
-
-Yes.
-
-### Does this library work with angular 2.x?
-
-The last version of this library that supports 2.x is `0.9.1`. However the upgrade from angular 2.x to 4.x is just a matter of [changing the dependencies in your package.json](https://github.com/mattlewis92/angular2-tv-tracker/commit/9439e3cec40293b2a86bc2222f610ee6ad4b5229) and [adding the `angular/animations` module](https://github.com/mattlewis92/angular2-tv-tracker/commit/9fe0e3158290c2612d20e4c0f54d2204fb70791e)
-
-### Does this library work with angular 4.x?
-The last version of this library that supports 4.x is `0.22.3`.
-
-### How do I use this with my favourite module bundler?
-
-See the [examples list](https://github.com/mattlewis92/angular-calendar/tree/master/build-tool-examples).
-
-### No styles are appearing?
-
-No component styles are included with each component to make it easier to override them (otherwise you’d have to use `!important` on every rule that you customised). Thus you need to import the CSS file separately from `node_modules/angular-calendar/css/angular-calendar.css`.
-
-### How come there are so many dependencies?
-
-When building the calendar some parts were found to be reusable so they were split out into their own modules. Only the bare minimum that is required is included with the calendar, there is no extra code than if there were no dependencies. `date-fns` especially only imports directly the functions it needs and not the entire library.
-
-### The month, week or day view doesn’t meet my project requirements, but the other views do.
-
-Build your own component to replace that view, and use it in place of the one this library provides. It’s impossible to provide a calendar component that meets everyones use cases, hopefully though at least some of the day / week / month view components provided can be customised with the calendars API enough to be of some use to most projects.
-
-### How come there’s no year view like the ng1 version?
-
-As there are so many events to show on each month, it doesn’t provide a lot of value and is just an extra burden to maintain. There is nothing to stop someone from building a new lib like `angular-calendar-year-view` though ;)
-
-### Does this calendar work with mobile?
-
-This library is not optimised for mobile. Due to the complex nature of a calendar component, it is non trivial to build a calendar that has a great UX on both desktop and mobile. It is recommended to build your own calendar component for mobile that has a dedicated UX. You may be able to get some degree of mobile support by setting some custom CSS rules for smaller screens and [including hammerjs](http://hammerjs.github.io/) but your mileage may vary.
-
-### How do I use a custom template?
-
-All parts of this calendar can be customised via the use of an `ng-template`. The recipe for applying one is as follows:
-* Find the template you would like to customise for the month, week or day view component. You can find all available custom templates by reading the [documentation](https://mattlewis92.github.io/angular-calendar/docs/) for each component. For this example we will pick the [`cellTemplate`](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthView.component.ts#L149) from the month view.
-* Next find the corresponding child component that will render the template by viewing the source. For our example of the month view cell it is [this component](https://github.com/mattlewis92/angular-calendar/blob/e81c71cf0d447416e0290613f71f20cb003b92b7/src/components/month/calendarMonthCell.component.ts)
-* Now copy the [template source](https://github.com/mattlewis92/angular-calendar/blob/18df151d679804fd097dbfcc80fa86e99211d88d/src/components/month/calendarMonthCell.component.ts#L13-L47) for your chosen template into your own component and modify as your see fit.
-* Finally pass the template to the components input: `<mwl-calendar-month-view [cellTemplate]="cellTemplateId" />`
-* You can see an e2e working example of this [here](https://mattlewis92.github.io/angular-calendar/#/custom-templates)
-
-### What is the browser compatibility?
-
-All browsers supported by angular, apart from IE9 as it doesn't support flexbox.
-
-## Angular 1 version
-
-https://github.com/mattlewis92/angular-bootstrap-calendar
-
 ## Development
 
 ### Prepare your environment
@@ -138,12 +84,12 @@ Run `npm start` to start a development server on port 8000 with auto reload + te
 
 Run `npm test` to run tests once or `npm run test:watch` to continually run tests.
 
-### Release
+### Build
 
 * Bump the version in package.json (once the module hits 1.0 this will become automatic)
 
 ```bash
-npm run release
+npm run build
 ```
 
 ## License
